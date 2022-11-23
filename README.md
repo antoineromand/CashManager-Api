@@ -39,6 +39,7 @@ $ npm install
 $ npm run start
 
 # watch mode
+It will start the monolith
 $ npm run start:dev
 
 # production mode
