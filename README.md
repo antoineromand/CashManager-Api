@@ -31,6 +31,11 @@
 ```bash
 $ npm install
 ```
+## Init databases
+
+$ update .env
+$ create 2 db : cm_bank && cm_company
+
 
 ## Running the app
 
@@ -41,6 +46,8 @@ $ npm run start
 # watch mode
 It will start the monolith
 $ npm run start:dev
+
+
 
 # production mode
 $ npm run start:prod
