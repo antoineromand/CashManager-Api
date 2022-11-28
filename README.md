@@ -32,9 +32,11 @@
 $ npm install
 ```
 ## Init databases
+```bash
 
 $ update .env
 $ create 2 db : cm_bank && cm_company
+```
 
 
 ## Running the app
