@@ -1,5 +1,6 @@
-import { BaseEntity, BeforeInsert, Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { User } from "./User.entity";
+import { BaseEntity, BeforeInsert, Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Product } from './Product.entity';
+import { User } from './User.entity';
 
 @Entity()
 export class Company extends BaseEntity {
@@ -14,4 +15,7 @@ export class Company extends BaseEntity {
 
     @OneToOne(() => User, (user) => user.company)
     user: User;
+
+    @OneToMany(() => Product, (product) => product.company)
+    product: Product[];
 }
