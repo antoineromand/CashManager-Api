@@ -17,6 +17,7 @@ import { CompanyService } from './company.service';
     entities: entities_company,
     synchronize: true,
   })],
-  providers: [CompanyService]
+  providers: [CompanyService],
+  exports: [CompanyService]
 })
 export class CompanyModule { }
