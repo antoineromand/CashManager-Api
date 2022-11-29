@@ -9,7 +9,11 @@ export class TransactionService {
         if (!transaction.client_email) throw new HttpException('There is no client in the transaction !', HttpStatus.NOT_ACCEPTABLE)
         const company = await Company.findOne({ where: { id: transaction.company } });
         if (company === null) throw new HttpException('Cannot find the company !', HttpStatus.NOT_FOUND)
-        const $transaction = await Transaction.createQueryBuilder('transaction').insert().into(Transaction).values([{ client_email: transaction.client_email, amount: transaction.amount, company: company }]).execute();
+        const $transaction = await Transaction.createQueryBuilder('transaction').insert().into(Transaction).values([{ client_email: transaction.client_email, amount: transaction.amount, company: company, state: transaction.state }]).execute();
         return $transaction;
+    }
+
+    async getAllTransactions(company: string) {
+        return await Transaction.find({ where: { company: { id: company } } });
     }
 }

@@ -1,3 +1,4 @@
+import { TransactionState } from "@app/utils";
 import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Company } from "./Company.entity";
 import { Product } from "./Product.entity";
@@ -12,4 +13,11 @@ export class Transaction extends BaseEntity {
     client_email: string;
     @Column({ type: "decimal", precision: 10, scale: 2 })
     amount: number;
+    @Column({
+        type: 'enum',
+        enum: TransactionState,
+        default: TransactionState.CANCELED
+    })
+    state: TransactionState;
+
 }
