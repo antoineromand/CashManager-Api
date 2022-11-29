@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CompanyController } from './company.controller';
 import { CompanyService } from './company.service';
 import { ProductModule } from './product/product.module';
+import { TransactionModule } from './transaction/transaction.module';
 
 @Module({
   controllers: [CompanyController],
@@ -17,7 +18,7 @@ import { ProductModule } from './product/product.module';
     database: process.env.COMPANY_DATABASE_NAME,
     entities: entities_company,
     synchronize: true,
-  }), ProductModule],
+  }), ProductModule, TransactionModule],
   providers: [CompanyService],
   exports: [CompanyService]
 })
