@@ -6,7 +6,7 @@ export class Product extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({nullable: false})
+    @Column({ nullable: false })
     name: string;
 
     @Column({ type: "decimal", precision: 10, scale: 2, default: 0, nullable: false })
