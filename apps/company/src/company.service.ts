@@ -1,5 +1,5 @@
 import { Company } from '@app/entities';
-import { User } from '@app/entities/User.entity';
+import { User } from '@app/entities';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CompanyDTO, UserDTO } from './dto/register.dto';
 
