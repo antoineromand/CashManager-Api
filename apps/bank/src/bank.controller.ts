@@ -1,7 +1,8 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 import { delay, of } from 'rxjs';
 import { BankService } from './bank.service';
+import { TransactionDTO } from './dto/transaction.dto';
 
 @Controller('private/api/bank')
 export class BankController {
@@ -10,8 +11,12 @@ export class BankController {
 
   @Get()
   getBy(@Query('email') email: string) {
-    console.log(email)
     return this.bankService.getByEmail(email);
+  }
+
+  @Post()
+  createTransaction(@Body() transaction: TransactionDTO) {
+    return this.bankService.create(transaction)
   }
 
   @MessagePattern({ cmd: "ping" })
