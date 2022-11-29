@@ -5,6 +5,9 @@ export class BankAccount extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column({ nullable: false })
+    @Column({ nullable: false, unique: true })
+    email: string;
+
+    @Column({ nullable: false, default: 20 })
     balance: number;
 }
