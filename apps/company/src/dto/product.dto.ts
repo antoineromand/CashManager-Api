@@ -1,4 +1,4 @@
-export interface ProductDTO {
-    name: string,
-    price: number
+export class ProductDTO {
+    name: string;
+    price: number;
 }

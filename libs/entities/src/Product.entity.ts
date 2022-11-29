@@ -6,12 +6,12 @@ export class Product extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({nullable: false})
     name: string;
 
-    @Column({ type: "decimal", precision: 10, scale: 2, default: 0 })
+    @Column({ type: "decimal", precision: 10, scale: 2, default: 0, nullable: false })
     price: number;
 
-    @ManyToOne(() => Company, (company) => company.product)
+    @ManyToOne(() => Company, (company) => company.products, { nullable: false })
     company: Company;
 }

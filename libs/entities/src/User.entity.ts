@@ -11,10 +11,10 @@ export class User extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column()
+    @Column({ nullable: false, unique: true })
     email: string;
 
-    @Column()
+    @Column({ nullable: false })
     password: string;
 
     @Column({
@@ -24,7 +24,7 @@ export class User extends BaseEntity {
     })
     role: Role;
 
-    @OneToOne(() => Company, (company) => company.id)
+    @OneToOne(() => Company, (company) => company.id, { nullable: false })
     @JoinColumn()
     company: Company;
 
