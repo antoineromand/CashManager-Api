@@ -9,7 +9,7 @@ export class CompanyService {
     return await Company.find();
   }
   async findOne(email: string): Promise<User | undefined> {
-    return await User.findOne({ where: { email: email } })
+    return await User.findOne({ where: { email: email }, relations: ['company'] })
   }
 
   async createCompany(company: CompanyDTO) {
