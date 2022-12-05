@@ -1,3 +1,5 @@
+import { AuthModuleLib } from '@app/auth';
+import { AuthModule } from './auth/auth.module';
 import { entities_company } from '@app/entities/index';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
@@ -18,7 +20,7 @@ import { TransactionModule } from './transaction/transaction.module';
     database: process.env.COMPANY_DATABASE_NAME,
     entities: entities_company,
     synchronize: true,
-  }), ProductModule, TransactionModule],
+  }), ProductModule, TransactionModule, AuthModuleLib, AuthModule],
   providers: [CompanyService],
   exports: [CompanyService]
 })
