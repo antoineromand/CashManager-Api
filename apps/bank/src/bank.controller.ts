@@ -8,6 +8,11 @@ import { TransactionDTO } from './dto/transaction.dto';
 export class BankController {
 
   constructor(private bankService: BankService) { }
+  
+  @Get('/test')
+  test() {
+    return 'test'
+  }
 
   @Get()
   getBy(@Query('email') email: string) {
