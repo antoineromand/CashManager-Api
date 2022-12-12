@@ -8,6 +8,7 @@ import { CompanyController } from './company.controller';
 import { CompanyService } from './company.service';
 import { ProductModule } from './product/product.module';
 import { TransactionModule } from './transaction/transaction.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   controllers: [CompanyController],
@@ -20,7 +21,7 @@ import { TransactionModule } from './transaction/transaction.module';
     database: process.env.COMPANY_DATABASE_NAME,
     entities: entities_company,
     synchronize: true,
-  }), ProductModule, TransactionModule, AuthModuleLib, AuthModule],
+  }), ProductModule, TransactionModule, AuthModuleLib, AuthModule, UserModule],
   providers: [CompanyService],
   exports: [CompanyService]
 })
