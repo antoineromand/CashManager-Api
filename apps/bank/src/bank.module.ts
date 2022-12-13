@@ -7,7 +7,10 @@ import { BankAccount, entities_bank } from '@app/entities';
 
 @Module({
   controllers: [BankController],
-  imports: [ConfigModule.forRoot(),
+  imports: [ConfigModule.forRoot({
+    isGlobal: true,
+    envFilePath: `.env`
+  }),
   TypeOrmModule.forFeature(entities_bank),
   TypeOrmModule.forRoot({
     type: 'mysql',
@@ -20,6 +23,7 @@ import { BankAccount, entities_bank } from '@app/entities';
     synchronize: true,
   }),
   ],
-  providers: [BankService]
+  providers: [BankService],
+  exports: [BankService]
 })
 export class BankModule { }
