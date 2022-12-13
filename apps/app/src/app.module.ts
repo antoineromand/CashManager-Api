@@ -14,7 +14,10 @@ const options = {
     ClientsModule.register([
       { name: 'BANK_SERVICE', transport: Transport.TCP, options: options },
       { name: 'COMPANY_SERVICE', transport: Transport.TCP, options: options }
-    ]), ConfigModule.forRoot(),
+    ]), ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: `.env`
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
