@@ -12,7 +12,10 @@ import { UserModule } from './user/user.module';
 
 @Module({
   controllers: [CompanyController],
-  imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({
+  imports: [ConfigModule.forRoot({
+    isGlobal: true,
+    envFilePath: `.env`
+  }), TypeOrmModule.forRoot({
     type: 'mysql',
     host: process.env.COMPANY_DATABASE_HOST,
     port: parseInt(process.env.COMPANY_DATABASE_PORT),
