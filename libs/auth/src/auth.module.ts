@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { JwtModule, JwtModuleOptions, JwtService } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { CompanyModule } from 'apps/company/src/company.module';
@@ -12,7 +13,7 @@ const options: JwtModuleOptions = {
 }
 
 @Module({
-  imports: [JwtModule.register(options), PassportModule],
+  imports: [JwtModule.register(options), PassportModule, ConfigModule.forRoot()],
   providers: [AuthService, CompanyService, JwtStrategy],
   exports: [AuthService, JwtModule]
 })
