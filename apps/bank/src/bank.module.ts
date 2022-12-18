@@ -3,14 +3,18 @@ import { BankController } from './bank.controller';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BankService } from './bank.service';
-import { BankAccount, entities_bank } from '@app/entities';
+import { entities_bank } from '@app/entities';
+
+console.log(process.env.BANK_DATABASE_HOST)
+console.log(process.env.BANK_DATABASE_USERNAME)
+console.log(process.env.BANK_DATABASE_PASSWORD)
+console.log(process.env.BANK_DATABASE_NAME)
+console.log(process.env.BANK_DATABASE_PORT)
+
 
 @Module({
   controllers: [BankController],
-  imports: [ConfigModule.forRoot({
-    isGlobal: true,
-    envFilePath: `.env`
-  }),
+  imports: [ConfigModule.forRoot(),
   TypeOrmModule.forFeature(entities_bank),
   TypeOrmModule.forRoot({
     type: 'mysql',

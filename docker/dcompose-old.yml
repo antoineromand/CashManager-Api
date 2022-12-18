@@ -2,8 +2,10 @@ version: '3.9'
 services:
   database:
     image: mysql:latest
+    container_name: api-database
     environment:
       MYSQL_ROOT_PASSWORD: thisisadmin
+      MYSQL_DATABASE: nestjs  
     restart: always
     ports:
       - "3307:3306"
@@ -30,30 +32,16 @@ services:
     build:
       dockerfile: docker/Dockerfile.Monolith
     ports:
-      - "3000:3000"
+      - "4000:4000"
     env_file:
       - .env.prod
-    environment:
-      - BANK_DATABASE_HOST=database
-      - COMPANY_DATABASE_HOST=database
+
     depends_on:
       database:
         condition: service_healthy
+    links:
+      - database
+    
 
 volumes:
   dbdata:
-    # version: '3.9'
-    # services:
-    #   database:
-    #     image: mysql:latest
-    #     container_name: api-database
-    #     environment:
-    #       MYSQL_ROOT_PASSWORD: thisisadmin
-    #       MYSQL_DATABASE: nestjs
-    #     restart: always
-    #     ports:
-    #       - '3307:3306'
-    #     expose:
-    #       - '3307'
-    #     volumes:
-    #       - ./init:/docker-entrypoint-initdb.d
