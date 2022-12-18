@@ -41,6 +41,12 @@
       ],
       "@app/auth/*": [
         "libs/auth/src/*"
+      ],
+      "@app/dashboard": [
+        "libs/dashboard/src"
+      ],
+      "@app/dashboard/*": [
+        "libs/dashboard/src/*"
       ]
     }
   }
