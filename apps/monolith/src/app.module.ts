@@ -10,10 +10,10 @@ import { CompanyModule } from "apps/company/src/company.module";
     CompanyModule,
     BankModule,
     AuthModule,
-    ConfigModule.forRoot({ envFilePath: `.env`, isGlobal: true }),
+    ConfigModule.forRoot(),
     DashboardModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }

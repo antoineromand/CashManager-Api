@@ -12,12 +12,9 @@ import { UserModule } from './user/user.module';
 
 @Module({
   controllers: [CompanyController],
-  imports: [ConfigModule.forRoot({
-    isGlobal: true,
-    envFilePath: `.env`
-  }), TypeOrmModule.forRoot({
+  imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({
     type: 'mysql',
-    host: process.env.COMPANY_DATABASE_HOST,
+    host: process.env.COMPANY_DATABASE_HOST || 'localhost',
     port: parseInt(process.env.COMPANY_DATABASE_PORT),
     username: process.env.COMPANY_DATABASE_USERNAME,
     password: process.env.COMPANY_DATABASE_PASSWORD,
